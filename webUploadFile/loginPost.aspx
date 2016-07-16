@@ -1,1 +1,1 @@
-﻿
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="loginPost.aspx.cs" Inherits="webUploadFile.loginPost" %>

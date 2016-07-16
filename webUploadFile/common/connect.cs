@@ -9,12 +9,13 @@ namespace webUploadFile.common
 
     public class connect
     {
+        public string errorMessage;
         private MySql.Data.MySqlClient.MySqlConnection conn;
         public connect()
         {
             string myConnectionString;
 
-            myConnectionString = "server=127.0.0.1;uid=root;" + "pwd=123456;database=lab_sys;";
+            myConnectionString = "server=localhost;uid=root;" + "pwd=123456;database=lab_sys;";
 
             try
             {
@@ -24,7 +25,7 @@ namespace webUploadFile.common
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-                Console.WriteLine("数据库连接错误：" + ex);
+                errorMessage = "数据库连接错误：" + ex;
                 conn = null;
             }
         }
@@ -33,9 +34,20 @@ namespace webUploadFile.common
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = sql;
             cmd.Connection = conn;
-            cmd.CommandType = CommandType.TableDirect;
-            MySqlDataReader reader = cmd.ExecuteReader();
-            return reader;
+            //cmd.CommandType = CommandType.TableDirect;
+            try
+            {
+                MySqlDataReader reader = cmd.ExecuteReader();
+                return reader;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                errorMessage = "sql语句执行错误：\n" + sql + "\n错误信息\n" + ex;
+                return null;
+            }
+           
+            
+            
             /*
             while (reader.Read())
             {

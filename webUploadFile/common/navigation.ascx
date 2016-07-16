@@ -1,8 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="navigation.ascx.cs" Inherits="webUploadFile.navigation1" %>
 
-<asp:ScriptManagerProxy ID="ScriptManagerProxy" runat="server">
-    
-</asp:ScriptManagerProxy>
 
 <header id='index-logo' class='main-header hidden'>
     <div class='container'>
@@ -26,9 +23,9 @@
                 </div>
                 <div class='navbar-collapse collapse' role='navigation' id='main-menu'>
                     <ul class='menu'>
-                        <li role='presentation' id='HomePageLi'><a href='#'>Home Page</a></li>
+                        <li role='presentation' id='HomePageLi'><a href='index.aspx'>Home Page</a></li>
                         <li role='presentation' id='ProblemLi'><a href='#' title='Problem Set'>查看提交状态</a></li>
-                        <li role='presentation' id='StatusLi'><a href='#' title='Status'>提交实验</a></li>
+                        <li role='presentation' id='StatusLi'><a href='uploadFile.aspx' title='Status'>提交实验</a></li>
                         <li role='presentation' id='DownloadLi'><a href='#' title='Tools Download'>下载实验</a></li>
                         <li role='presentation' id='DownloadLi'><a href='#' title='Tools Download'>教师管理页面</a></li>
                         <li role='presentation' id='ForumLi'><a href='#' title='Discuss'><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> 讨论</a></li>
@@ -546,7 +543,7 @@
            $('#login-password').val('');
         });
         $('#logout').click(function () {
-            $.post('loginPost.php?order=2', {}, function (data) {
+            $.post('loginPost.aspx?order=2', {}, function (data) {
                 var result = JSON.parse(data);
                 if (result.status == 1) {
                     location.reload();
@@ -578,13 +575,10 @@
         $('#login-submit').click(function () {
             
             if (($('#form-login').validate()).form()) {
-                PageMethods.login($('#login-username').val(), $.md5($('#login-password').val()));
-                /*
-                $.post('loginPost.aspx/sayHi', { userName: $('#login-username').val(), password: $.md5($('#login-password').val()) }, function (data) {
-                    alert(data.d);
-                    $('#AlertP').html(data);
-                    $('#ErrorAlert').modal('show');
-                    /*var result = JSON.parse(data);
+                //PageMethods.login($('#login-username').val(), $.md5($('#login-password').val()));
+                
+                $.post('loginPost.aspx?order=1', { userName: $('#login-username').val(), password: $.md5($('#login-password').val()) }, function (data) {
+                    var result = JSON.parse(data);
                     if (result.status == 1) {
                         location.reload();
                     } else {
@@ -593,7 +587,7 @@
                         $('#AlertP').html(result.message);
                         $('#ErrorAlert').modal('show');
                     }
-                });*/
+                });
             }
         });
 
@@ -602,7 +596,6 @@
                 var result = JSON.parse(data);
                 if (result.status == 1) {
                     $('#updateInformation-user-name').html(result.data.user_name);
-                    $('#updateInformation-nick-name').val(result.data.nick_name);
                     $('#updateInformation-school').val(result.data.school);
                     $('#updateInformation-email').val(result.data.email);
                     $('#UpdateInfoModel').modal('toggle');
@@ -693,8 +686,6 @@
             var result = JSON.parse(data);
             if(result.status==1){
                 $('#UserInformationUserName').html(result.data.user_name);
-                $('#UserInformationNickName').html(result.data.nick_name);
-                $('#UserInformationRank').html(result.data.rank);
                 $('#UserInformationAccepted').html(result.data.solved);
                 $('#UserInformationSubmit').html(result.data.submitted);
                 $('#UserInformationACCount').html(result.data.ACCount);

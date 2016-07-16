@@ -118,7 +118,6 @@
     <Content Include="common\scripts\jquery.validate.min.js" />
     <Content Include="common\scripts\messages_zh.min.js" />
     <Content Include="common\scripts\npm.js" />
-    <Content Include="loginPost.asmx" />
     <Content Include="loginPost.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -135,12 +134,15 @@
   <ItemGroup>
     <Content Include="index.aspx" />
     <Content Include="common\navigation.ascx" />
+    <Content Include="uploadFile.aspx" />
+    <Content Include="uploadFilePost.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\connect.cs" />
+    <Compile Include="common\postStatus.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -154,10 +156,6 @@
     </Compile>
     <Compile Include="common\navigation.ascx.designer.cs">
       <DependentUpon>navigation.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="loginPost.asmx.cs">
-      <DependentUpon>loginPost.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="loginPost.aspx.cs">
       <DependentUpon>loginPost.aspx</DependentUpon>
@@ -173,6 +171,20 @@
     </Compile>
     <Compile Include="common\web.Master.designer.cs">
       <DependentUpon>web.Master</DependentUpon>
+    </Compile>
+    <Compile Include="uploadFile.aspx.cs">
+      <DependentUpon>uploadFile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadFile.aspx.designer.cs">
+      <DependentUpon>uploadFile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="uploadFilePost.aspx.cs">
+      <DependentUpon>uploadFilePost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="uploadFilePost.aspx.designer.cs">
+      <DependentUpon>uploadFilePost.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
