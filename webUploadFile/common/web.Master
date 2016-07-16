@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="web.master.cs" Inherits="webUploadFile.web" %>
+<%@ Register Src="navigation.ascx" TagName="navigation" TagPrefix="ucl" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel='stylesheet' type='text/css' href='style/css/bootstrap.min.css' />
+    <link rel="stylesheet" type="text/css" href="style/css/bootstrap-table.min.css">
+    <link rel='stylesheet' type='text/css' href='style/css/font-awesome.min.css' />
+    <link rel='stylesheet' type='text/css' href='style/css/common.css' />
+    <link rel='stylesheet' type='text/css' href='style/css/bootstrap-treeview.min.css' />
+
+    <script src='common/scripts/jquery-1.12.0.min.js' type='text/javascript'></script>
+    <script src='common/scripts/bootstrap.min.js' type='text/javascript'></script>
+    <script src="common/scripts/bootstrap-table.min.js" type="text/javascript"></script>
+    <script src="common/scripts/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="common/scripts/jquery.metadata.js" type="text/javascript"></script>
+    <script src="common/scripts/jquery.md5.js" type="text/javascript"></script>
+    <script src="common/scripts/messages_zh.min.js" type="text/javascript"></script>
+    <script src='common/scripts/common.js' type='text/javascript'></script>
+    <script src='common/scripts/bootstrap-treeview.min.js' type='text/javascript'></script>
+
+    <title>实验室管理系统</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="BodyForm" runat="server">
+        <asp:ScriptManager ID="ScriptManager" runat="server" EnablePageMethods="true">
+            <Services>
+                <asp:ServiceReference Path="~/loginPost.asmx" />
+            </Services>
+        </asp:ScriptManager>
+    </form>
+    
+    <ucl:navigation id="nav" runat="server"/> 
+
+    <asp:ContentPlaceHolder ID="body" runat="server">
+        
+    </asp:ContentPlaceHolder>
+    
+
+<footer id='main-footer' class="bs-docs-footer">
+    <div class="container">
+        <p>东北林业大学软件工程实验室管理系统 All Rights Reserved.</p>
+        <p>Any problem, Please <a href='#' target=_blank>@Contact NEFU</a>.</p>
+    </div>
+</footer>
+
+</body>
+</html>
